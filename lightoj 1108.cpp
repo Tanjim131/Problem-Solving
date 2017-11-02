@@ -178,7 +178,7 @@ class Graph{
 
                 if((int) vv.size() > 1 && BellmanFord(vv)){
                     for(int r = 0 ; r < (int) vv.size() ; r++) mark[vv[r]] = true;
-                    //for(auto val : vv) works find but using it given Compilation Error in LightOJ
+                    //for(auto val : vv) works fine but using it given Compilation Error in LightOJ
                 }
             }
         }
