@@ -21,7 +21,7 @@ using namespace std;
 //int dx[]={1,1,0,-1,-1,-1,0,1};
 //int dy[]={0,1,1,1,0,-1,-1,-1};//8 direction
 
-const int MAXN = 100 + 5;
+const int MAXN = 50 + 10;
 const int INF = 1e8 + 10;
 
 class Graph{
