@@ -87,6 +87,7 @@ inline void sieve(){
 inline int ret(int num,int prime){
     // returns the highest exponent of a prime number that divides n!
     // Legendre's Formula
+    // wiki Link : https://en.wikipedia.org/wiki/Legendre%27s_formula
     int counter = 0;
     while(num){
         counter += num/prime;
