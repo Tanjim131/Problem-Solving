@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main()
+{
+    long long int a,b;
+    //while (scanf("%d %d",&a,&b)!=EOF)
+    while(scanf("%lld %lld",&a,&b)==2)
+    {
+        if(a>b || a==b)
+        {
+            printf("%lld\n",a-b);
+        }
+        else
+        {
+            printf("%lld\n",b-a);
+        }
+    }
+    return 0;
+}
