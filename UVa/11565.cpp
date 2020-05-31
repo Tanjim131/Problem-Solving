@@ -1,24 +1,5 @@
 #include <iostream>
-#include <algorithm>
-#include <vector>
 #include <cmath>
-
-class Triplet{
-    public:
-        int x,y,z;
-
-        Triplet(int _x, int _y, int _z) : x(_x), y(_y), z(_z){}
-
-        bool operator < (const Triplet &t) const{
-            if(x == t.x){
-                if(y == t.y){
-                    return z < t.z;
-                }
-                return y < t.y;
-            }
-            return x < t.x;
-        }
-};
 
 inline bool isUnique(int i, int j, int k){
     return i != j && j != k && k != i;
@@ -44,22 +25,22 @@ int main(int argc, char const *argv[])
 
         int minimum = sqrt(C);
 
-        std::vector <Triplet> solutions;
+        bool solution = false;
 
         for(int i = -minimum ; i <= minimum ; ++i){
             for(int j = -minimum ; j <= minimum ; ++j){
                 for(int k = -minimum ; k <= minimum ; ++k){
                     if(isUnique(i,j,k) && isSolution(A, B, C, i, j, k)){
-                        solutions.emplace_back(Triplet(i, j, k));
+                        std::cout << i << " " << j << " " << k << '\n';
+                        solution = true;
                     }
                 }
+                if(solution) break;
             }
+            if(solution) break;
         }
 
-        if(solutions.size()){
-            std::sort(solutions.begin(), solutions.end());
-            std::cout << solutions[0].x << " " << solutions[0].y << " " << solutions[0].z << "\n"; 
-        } else{
+        if(!solution){
             std::cout << "No solution.\n";
         }
     }

@@ -4,7 +4,7 @@
 
 void generatePermutations(std::string &sequence, int index, std::vector <std::string> &v){
     if(index == sequence.size()){
-        //std::cout << sequence << "\n";
+        std::cout << sequence << "\n";
         v.push_back(sequence);
     } else{
         generatePermutations(sequence, index + 1, v);
