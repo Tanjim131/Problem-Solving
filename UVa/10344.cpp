@@ -14,18 +14,19 @@ bool backtrack(const std::vector <int> &permutation, int output, int index = 1){
     return plus || minus || mult;
 }
 
-bool generate_permutations(std::vector<int> &nums, int index = 0, std::set<std::vector<int>> s = std::set<std::vector<int>>()){
+bool generate_permutations(std::vector<int> &nums, std::set<std::vector<int>> &s, int index = 0){
     if(index == nums.size()){
         if(s.find(nums) == s.end()){
             s.insert(nums);
             return backtrack(nums, nums[0]);
         } 
+        return false;
     }
-    bool ret = generate_permutations(nums, index + 1);
+    bool ret = generate_permutations(nums, s, index + 1);
     if(ret) return true;
     for(int i = index + 1 ; i < nums.size() ; ++i){ 
         std::swap(nums[index], nums[i]);
-        ret = generate_permutations(nums, index + 1);
+        ret = generate_permutations(nums, s, index + 1);
         if(ret) break;
         std::swap(nums[index], nums[i]);
     }
@@ -42,7 +43,8 @@ int main(int argc, char const *argv[])
             if(nums[i]) allZero = false;
         }
         if(allZero) break;
-        bool possible = generate_permutations(nums);
+        std::set<std::vector<int>> s;
+        bool possible = generate_permutations(nums, s);
         if(possible){
             std::cout << "Possible\n";
         } else{
