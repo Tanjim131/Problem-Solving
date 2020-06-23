@@ -2,7 +2,7 @@
 
 std::string addition(const std::string &numberA, const std::string &numberB){
     int M = numberA.length();
-    std::string sum(M, '0');
+    std::string sum(M, '0'); // sum is guaranteed to not exceed M digits
 
     int carry = 0;
     for(int i = M - 1 ; i >= 0 ; --i){
@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
     while(T--){
         int M;
         std::cin >> M;
-        std::string numberA(M, '0'), numberB(M, '0'); // sum is guaranteed to not exceed M digits
+        std::string numberA(M, '0'), numberB(M, '0'); 
         for(int i = 0 ; i < M ; ++i){
             std::cin >> numberA[i] >> numberB[i];
         }        

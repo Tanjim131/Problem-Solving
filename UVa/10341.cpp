@@ -1,72 +1,59 @@
 #include <iostream>
-#include <cstdio>
+#include <iomanip>
 #include <cmath>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <sstream>
 
-using namespace std;
+// 0 <= p, r <= 20
+// -20 <= q, s, t <= 0
+int compute_status(double val, int p, int q, int r, int s, int t, int u){
 
-#define LL long long
-#define pb push_back
-#define mp make_pair
-#define pii pair < int , int >
-#define infile freopen("in.txt","r",stdin)
-#define outfile freopen("out.txt","w",stdout)
+    // if val increases then "a" decreases and "b" increases
+    // if val decreases then "a" increases and "b" decreases
 
-//int dx[]={1,0,-1,0};
-//int dy[]={0,1,0,-1}; //4 Direction
-//int dx[]={1,1,0,-1,-1,-1,0,1};
-//int dy[]={0,1,1,1,0,-1,-1,-1};//8 direction
+    double a = p * std::exp(-val) + r * std::cos(val); // >= 0
+    double b = q * std::sin(val) + s * std::tan(val) + t * val * val; // <= 0
+    
+    if(u < 0) b += u;
+    else a += u;
 
-const double eps = 0.0001;
-const double eps1 = 0.00001;
+    b *= -1.0; // make b positive to compare absolute values
 
-double p,q,r,s,t,u;
-bool f = false;
-
-bool check(double val){
-    double qq = p * exp(-val) + q * sin(val) + r * cos(val) + s * tan(val) + t * val * val + u;
-    //double rr = abs(qq - eps);
-    cout << "qq " << qq << endl;
-    cout << "statement " << (qq < 0.0) << endl;
-    if(qq < 0.0) return false;
-    if(abs(qq) < eps) return true;
-    return false;
+    double difference = std::abs(a - b);
+    constexpr double EPS = 1e-7;
+    if(difference < EPS) return 0;
+    if(a < b) return -1; // need to increase a and decrease b, i.e need to decrease "val"
+    return 1; // need to decrease a and increase b, i.e need to increase "val"
 }
 
-double binary(){
+double binary(int p, int q, int r, int s, int t, int u){
     double low = 0.0 , high = 1.0;
-    double id = -1.0;
-    while((high - low) > eps){
+    double ans = -1.0;
+    constexpr double EPS = 1e-9; // 1e-9 or lower
+    while(high - low > EPS){
         double mid = (low + high) / 2.0;
-        cout << "low " << low << " high " << high << " mid " << mid << endl;
-        if(check(mid)){
-            id = mid;
-            high = mid;
-            f = true;
+        int status = compute_status(mid, p, q, r, s, t, u);
+        if(!status){
+            ans = mid;
+            break;
         }
-        else low = mid;
-        cout << "low " << low << " high " << high << " mid " << mid << endl;
+        else if(status == -1){
+            high = mid;
+        } else{
+            low = mid;
+        }
     }
-    return id;
+    return ans;
 }
 
 int main(){
-    while(scanf("%lf %lf %lf %lf %lf %lf",&p,&q,&r,&s,&t,&u) != EOF){
-        double counter = binary();
-        if(!f) printf("No solution\n");
-        else printf("0.4f\n",counter);
+    int p, q, r, s, t, u;
+    while(std::cin >> p >> q >> r >> s >> t >> u){
+        double answer = binary(p, q, r, s, t, u);
+        if(answer == -1.0){
+            std::cout << "No solution\n";
+        } else {
+            std::cout << std::fixed << std::setprecision(4) << answer << '\n';
+        }
     }
 
     return 0;
 }
-
-
