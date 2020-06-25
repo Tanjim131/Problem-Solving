@@ -35,8 +35,6 @@ unordered_map < char , int > ump;
 int ret;
 
 void topsort(vector < vector < char > > &qq){
-    //bool flag = false;
-
     for(int i = 0 ; i < nodes ; i++){
         if(in[i] == 0 && !vis[i]){
             for(int j = 0 ; j < edges[i].size() ; j++) in[edges[i][j]]--;
@@ -47,7 +45,6 @@ void topsort(vector < vector < char > > &qq){
             vis[i] = false;
             res.erase(res.end() - 1);
             for(int j = 0 ; j < edges[i].size() ; j++) in[edges[i][j]]++;
-            //flag = true;
         }
     }
 
