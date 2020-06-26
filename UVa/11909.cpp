@@ -1,23 +1,22 @@
 #include <iostream>
-#include <cstdio>
 #include <cmath>
-#include <cstdlib>
+#include <iomanip>
 
-using namespace std;
-
-const double pi = 3.1415926535897932384626;
+constexpr double pi = 3.1415926535897932384626;
 
 int main(){
-    //freopen("in.txt","r",stdin);
-    //freopen("out.txt","w",stdout);
     int l,w,h,theta;
-    while(scanf("%d %d %d %d",&l,&w,&h,&theta) != EOF){
-        double angle = (theta * pi) / 180.0;
-        double temp = tan(angle) * l;
-        double side = h - temp;
-        double area = 0.5 * (side + h) * l;
-        double ret = area * w;
-        printf("%0.3f mL\n",ret);
+    while(std::cin >> l >> w >> h >> theta){
+        double threshold = std::atan(h * 1.0 / l);
+        double angle = theta * pi / 180.0;
+        double remaining_milk_volume;
+        if(angle > threshold){
+            remaining_milk_volume = 0.5 * std::tan(pi / 2.0 - angle) * h * h * w;
+        } else{
+            double empty_area = 0.5 * l * std::tan(angle) * l * w;
+            remaining_milk_volume = l * w * h - empty_area;
+        }
+        std::cout << std::fixed << std::setprecision(3) << remaining_milk_volume << " mL\n";
     }
     return 0;
 }

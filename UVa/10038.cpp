@@ -1,8 +1,6 @@
-#include<cstdio>
-#include<cstdlib>
-#include<algorithm>
-#include<iostream>
-#include<cstring>
+#include <iostream>
+#include <vector>
+#include <cmath>
 
 using namespace std;
 
@@ -10,17 +8,13 @@ int main()
 
 {
     int n;
-    while(scanf("%d",&n) != EOF)
+    while(cin >> n)
     {
 
-        int *ara = new int[n + 5];
-        int *ara1 = new int[n + 5];
+        std::vector <int> ara(n), ara1(n, 0);
 
-        for(int i = 0 ; i < n + 5 ; i++) ara1[i] = 0;
-
-
-        for(int i=0;i<n;i++){
-            scanf("%d",&ara[i]);
+        for(int i = 0 ; i < n ; ++i){
+            std::cin >> ara[i];
         }
 
         for(int i = 1 ; i < n ; i++){
