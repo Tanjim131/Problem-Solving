@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -13,9 +14,7 @@ int main()
     {
         if(i>j)
         {
-            i=i^j
-            j=j^i;
-            i=i^j;
+            std::swap(i,j);
         }
         for(k=i;k<=j;k++)
         {

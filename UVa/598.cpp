@@ -4,7 +4,7 @@
 #include <sstream>
 #include <string>
 
-// not very efficient implementation, but as there aren't any repetitions, this is will do fine
+// will not if there are multiple newspapers with the same name
 
 void combination(const std::vector<std::string> &newspapers, std::vector <std::string> current_subset, int target_subset_size, int index = 0){
     // at each index, we can either take the current newspaper or leave it

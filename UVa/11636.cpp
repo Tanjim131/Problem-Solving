@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -18,13 +19,13 @@ int main()
 
             else if(!(a&(a-1)))
             {
-                ans=log2(a);
+                ans = log2(a);
 
                 printf("Case %d: %d\n",++i,ans);
             }
             else
             {
-                ans=log2(a);
+                ans = log2(a);
 
                 printf("Case %d: %d\n",++i,ans+1);
             }
