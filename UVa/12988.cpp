@@ -62,8 +62,7 @@ void backtrack(std::vector<std::vector<char>> &sudoku_board, const std::vector<C
     }
     for(int i = 1 ; i <= 4 ; ++i){
         char value = i + '0';
-        bool verdict = isValidPlacement(sudoku_board, empty_cells[index], value);
-        if(verdict){
+        if(isValidPlacement(sudoku_board, empty_cells[index], value)){
             int x = empty_cells[index].x;
             int y = empty_cells[index].y;
             sudoku_board[x][y] = value;
