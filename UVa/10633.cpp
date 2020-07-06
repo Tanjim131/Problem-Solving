@@ -1,7 +1,7 @@
 #include <iostream>
 
 unsigned long long computeAnswer(unsigned long long input){
-    long long n = 10 * input / 9;
+    unsigned long long n = 10 * input / 9;
     return n;
 }
 
