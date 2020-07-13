@@ -30,17 +30,16 @@ double backtrack(const std::vector <GasStop> &gasStops, double distanceToDestina
     double ratio = remGas / total_capacity;
 
     double answer = std::numeric_limits <double>::max();
+    double stationCost = std::round((total_capacity - remGas) * gasStops[index].cost + 200.0) / 100.0;
 
     if(!canReachNextStation(remGas, distanceToNextStation, milesPG)){ 
         // fill up the gas tank
-        double stationCost = std::round((total_capacity - remGas) * gasStops[index].cost + 200.0) / 100.0;
         answer = backtrack(gasStops, distanceToDestination, total_capacity, total_capacity, milesPG, current_cost + stationCost, index + 1, index);
     } else{
         double ret1 = std::numeric_limits<double>::max();
         if(ratio < 0.5){
             // if it can reach the next station
             // it can only take gas at this station if less than half capcity is remaining
-            double stationCost = std::round((total_capacity - remGas) * gasStops[index].cost + 200.0) / 100.0;
             ret1 = backtrack(gasStops, distanceToDestination, total_capacity, total_capacity, milesPG, current_cost + stationCost, index + 1, index);
         } 
         double ret2 = backtrack(gasStops, distanceToDestination, total_capacity, current_capacity, milesPG, current_cost, index + 1, lastOilStop);
