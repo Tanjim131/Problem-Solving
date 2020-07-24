@@ -2,6 +2,7 @@
 #include <vector>
 #include <cmath>
 #include <limits>
+#include <string>
 #include <unordered_set>
 
 bool isMagicSquarePossible(const std::string &str){
