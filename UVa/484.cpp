@@ -37,7 +37,7 @@ int main() {
     for(itr = s.begin() , itw = s.begin() ; itr != s.end() ; itr++){
         if(tmps.insert(*itr).second){
             *itw++ = *itr;
-            }
+        }
     }
 
     s.erase(itw,s.end());
