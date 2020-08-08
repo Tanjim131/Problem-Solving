@@ -15,11 +15,9 @@ int main(int argc, char const *argv[])
         return 0;
     }
     cout << "YES\n";
-    double div = s * 1.0 / k;
-    double whole, frac;
-    frac = modf(div, &whole);
+    int whole = s / k;
     int a = whole + 1;
-    int at = round(frac * k);
+    int at = s % k;
     int b = whole;
     int bt = k - at;
     int _max = max(a, b);
