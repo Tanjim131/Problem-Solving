@@ -10,8 +10,9 @@ int main(int argc, char const *argv[])
     while(T--){
         int n;
         cin >> n;
-        for(int i = n ; i > 0 ; --i){
-            cout << i << " ";
+        for(int i = 0 ; i < n ; ++i){
+            cout << i + 1;
+            if(i != n - 1) cout << " ";
         }
         cout << '\n';
     }
