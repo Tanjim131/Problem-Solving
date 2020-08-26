@@ -20,7 +20,7 @@ int main(int argc, char const *argv[])
     long long answer = 0;
     for(int i = 0 ; i < 26 && k != 0 ; ++i){
         int can = min(cards[i], k);
-        if(can <= cards[i]){ // if I can't take more than what cards[i] has, then double the quantity
+        if(can <= cards[i]){ // if I can't take more than what cards[i] has, then square the quantity
             answer += 1LL * can * can;
         } else{ // I can take more than what cards[i] has
             answer += can;
