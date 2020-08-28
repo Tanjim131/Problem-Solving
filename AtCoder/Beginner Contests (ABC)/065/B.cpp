@@ -6,7 +6,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     // the a_i's are not necessarily distinct, so if it's possible to reach state 2, it'll be possible to reach it within N steps
-    // otherwise there's a cycle because after N steps, there must be a repeated state (pigeonhole principle) 
+    // otherwise there's a cycle (pigeonhole principle)
     int N;
     cin >> N;
     vector <int> a(N + 1);
