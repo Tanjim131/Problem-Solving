@@ -1,3 +1,9 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
 class DSU{
     vector <int> parent, rank, minimum, maximum, total_elements;
     
@@ -54,3 +60,26 @@ class DSU{
             return maximum[find_parent(v)];
         }
 };
+
+int main(int argc, char const *argv[])
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    int n, m;
+    cin >> n >> m;
+    DSU dsu(n);
+    for(int i = 0 ; i < m ; ++i){
+        string q;
+        cin >> q;
+        if(q == "union"){
+            int u,v;
+            cin >> u >> v;
+            dsu.union_by_rank(u, v);
+        } else{
+            int v;
+            cin >> v;
+            cout << dsu.getMin(v) << " " << dsu.getMax(v) << " " << dsu.getSize(v) << '\n';
+        }
+    }
+    return 0;
+}
