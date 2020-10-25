@@ -76,7 +76,7 @@ int main(int argc, char const *argv[])
     for(int i = 0 ; i < m ; ++i){
         string word; cin >> word;
         int id = words[word];
-        cost += dsu.getMin(dsu.find_parent(id));
+        cost += dsu.getMin(id);
     }
     cout << cost << '\n';
     return 0;
